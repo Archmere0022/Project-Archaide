@@ -1,0 +1,251 @@
+:root {
+    --spotify-black: #121212;
+    --spotify-dark-grey: #181818;
+    --spotify-light-grey: #282828;
+    --spotify-green: #bd6294;
+    --spotify-white: #ffffff;
+    --spotify-offwhite: #b3b3b3;
+}
+
+/* Container to pin the widget to the bottom right */
+.floating-widget-container {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 9999; /* Keeps it on top of all other page elements */
+    transition: all 0.3s ease;
+}
+
+/* Base Widget settings */
+
+.spotify-widget {
+    background-color: #181818;
+    color: #ffffff;
+    width: 340px; /* Safe default sizing for desktop displays */
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-sizing: border-box; /* Crucial: stops padding from expanding width */
+}
+
+/* --- RESPONSIVE MEDIA QUERIES --- */
+
+/* For smaller screens like Mobile Phones (Widths up to 480px) */
+@media (max-width: 480px) {
+    .floating-widget-container {
+        bottom: 12px;
+        right: 12px;
+        left: 12px; /* Pulls it to the left edge to take up full available width safely */
+    }
+
+    .spotify-widget {
+        width: auto; /* Lets it dynamically scale on mobile */
+        padding: 16px; /* Slightly tighter padding to save screen real estate */
+    }
+    
+    /* Optional: Hide the volume bar on mobile to save space */
+    .volume-container {
+        display: none; 
+    }
+    .controls {
+        gap: 0px;
+    }
+}
+
+.spotify-widget {
+    background-color: var(--spotify-dark-grey);
+    color: var(--spotify-white);
+    width: 340px;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.widget-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--spotify-offwhite);
+    margin-bottom: 16px;
+}
+
+.spotify-icon {
+    color: var(--spotify-green);
+    font-size: 18px;
+}
+
+.widget-content {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.album-art {
+    width: 64px;
+    height: 64px;
+    border-radius: 8px;
+    object-fit: cover;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.track-info {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.track-title {
+    margin: 0 0 4px 0;
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.track-artist {
+    margin: 0;
+    font-size: 12px;
+    color: var(--spotify-offwhite);
+}
+
+.progress-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.time {
+    font-size: 10px;
+    color: var(--spotify-offwhite);
+}
+
+.progress-bar {
+    flex-grow: 1;
+    height: 4px;
+    background-color: var(--spotify-light-grey);
+    border-radius: 2px;
+    position: relative;
+    cursor: pointer;
+}
+
+.progress {
+    height: 100%;
+    width: 0%;
+    background-color: var(--spotify-white);
+    border-radius: 2px;
+}
+
+.progress-bar:hover .progress {
+    background-color: var(--spotify-green);
+}
+
+/* Controls Wrapper */
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+}
+
+.playback-buttons {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.control-btn {
+    background: none;
+    border: none;
+    color: var(--spotify-offwhite);
+    font-size: 14px;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.control-btn:hover {
+    color: var(--spotify-white);
+}
+
+.play-btn {
+    background-color: var(--spotify-white);
+    color: var(--spotify-black);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.play-btn:hover {
+    transform: scale(1.05);
+}
+
+.control-btn.active {
+    color: var(--spotify-green);
+}
+
+/* Volume Layout Styling */
+.volume-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 80%;
+}
+
+#volume-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--spotify-light-grey);
+    outline: none;
+    cursor: pointer;
+}
+
+/* Customizing the slider fill via a linear-gradient updated by JS */
+#volume-slider::-webkit-slider-runnable-track {
+    height: 4px;
+    border-radius: 2px;
+}
+
+#volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--spotify-white);
+    cursor: pointer;
+    margin-top: -4px; /* Centers the thumb over the track */
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.volume-container:hover #volume-slider::-webkit-slider-thumb {
+    opacity: 1;
+}
+
+/* Color slider green on container hover */
+.volume-container:hover #volume-slider {
+    background: linear-gradient(to right, var(--spotify-green) 0%, var(--spotify-green) var(--volume-perc, 70%), var(--spotify-light-grey) var(--volume-perc, 70%), var(--spotify-light-grey) 100%);
+}
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* This completely hides both horizontal and vertical scrollbars */
+}
