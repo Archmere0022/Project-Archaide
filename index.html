@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>X</title>
+    <link rel="icon" type="image/png" href="./Resources/A.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #1e1e1e;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-container {
+    background: #131313;
+;
+    padding: 30px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0,0,0,.2);
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 15px 0;
+    box-sizing: border-box;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    cursor: pointer;
+}
+
+#message {
+    color: #F472B6;
+    margin-top: 15px;
+}
+#hero {
+            height: 100vh;
+            max-width: 100%;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+ #hero-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            max-width: 650px;
+            padding: 0 24px;
+        }
+
+        .hero-orbs {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.12;
+            animation: floatOrb 12s infinite ease-in-out alternate;
+        }
+
+        .orb-1 {
+            width: 300px;
+            height: 300px;
+            background: var(--primary);
+            top: 20%;
+            left: 15%;
+        }
+
+        .orb-2 {
+            width: 400px;
+            height: 400px;
+            background: var(--secondary);
+            bottom: 15%;
+            right: 10%;
+            animation-delay: -4s;
+        }
+
+        #hero h1 {
+            font-size: 4.5rem;
+            margin: 12px 0;
+            text-shadow: 0 0 20px var(--glow);
+            line-height: 1.1;
+        }
+
+        #hero .font-accent {
+            font-size: 2.2rem;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .hero-tagline {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin-bottom: 36px;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            color: var(--text-muted);
+            animation: bounce 2s infinite;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+        .scroll-indicator:hover {
+            color: var(--primary);
+        }
+
+</style>
+<section id="hero">
+    
+    <div class="login-container">
+    
+    <img src="./Archaide/Music/resources/image.png" alt="">
+
+    <input type="password" id="password" placeholder="Enter Password">
+
+    <button id="loginBtn">Enter</button>
+
+    <p id="message"></p>
+    <canvas id="hero-canvas"></canvas>
+</div>
+</section>
+
+
+<script src="script.js"></script>
+</body>
+</html>
